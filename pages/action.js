@@ -4,10 +4,12 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from "@react-navigation/native";
 
 //Local files:
+import PopUp from "../components/popUp";
 import styles from '../styles';
+import Radio from "../components/radios";
+import BackButton from "../components/BackButton";
 
 //Icons:
-import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -15,53 +17,23 @@ import { FontAwesome } from '@expo/vector-icons';
 let selected = false
 
 function Assets(){
-
-    const [getBackground, setBackground] = useState('white')
-    const [getBackground2, setBackground2] = useState('black')
-
     const navigation = useNavigation()
-
 
     return(
         <SafeAreaView style={styles.screen}>
-            <TouchableOpacity 
-                style={[styles.sideBySide, {alignItems:'center'}]}
-                onPress={()=>navigation.navigate('Clients')}>
-                    <AntDesign name="left" size={24} color="black" />   
-                    <Text style={[styles.text]}>Voltar</Text>
-            </TouchableOpacity>
 
-            <View style={{alignItems:'center', marginTop:'10%'}}>
-                <View style={[styles.sideBySide, styles.Btw]}>
+            <View style={[styles.sideBySide, styles.Btw, {marginBottom:'4%'}]}>
+                <BackButton value="Voltar" />
+                <PopUp />    
+            </View>
+            
 
-                        <TouchableOpacity 
-                            style={[styles.button, {backgroundColor:getBackground}]}
-                            onPress={()=>{
-                                if(selected==false){
-                                    setBackground('black');
-                                    setBackground2('white');
-                                    selected=true
-                                }
-                            }}>
-                                <Text style={styles.text}>
-                                    Adicionar
-                                </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
-                            style={[styles.button, {backgroundColor:getBackground2}]}
-                            onPress={() =>{
-                                if(selected==true){
-                                    setBackground2('black')
-                                    setBackground('white')
-                                    selected=false
-                                }
-                            }
-                            }>
-                                <Text style={styles.text}>
-                                    Visualizar
-                                </Text>
-                        </TouchableOpacity>
-                </View>
+            <View style={{alignItems:'center', marginTop:'2%'}}>
+                
+                <Radio 
+                  leftName="Adicionar"
+                  rightName="Visualizar" 
+                />
 
                 <ScrollView style={styles.containerOptions}>
                     <Pressable style={[styles.options, styles.sideBySide]}>

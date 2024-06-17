@@ -4,10 +4,10 @@
     "slug": "meuapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./midia/logo4BT.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./midia/logo4BT.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

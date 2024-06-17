@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
-import { Button, StyleSheet, Text, View, TextInput, StatusBar } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import React from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './routes'
+import { SQLiteProvider } from 'expo-sqlite';
+import initializeDatabase from './database/initializeDataBase';
 
 export default function App(){
   return(
     <NavigationContainer>
       <StatusBar backgroundColor="#3388aa" barStyle="light-content"/>
-      <Routes />
+      <SQLiteProvider databaseName='vistoriaBT.db' onInit={initializeDatabase}>
+        <Routes />  
+      </SQLiteProvider>
     </NavigationContainer>
   )
 }

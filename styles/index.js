@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native"
-import PopUP from "../scripts/popUp";
 
 const styles = StyleSheet.create({
     screen:{
@@ -7,7 +6,7 @@ const styles = StyleSheet.create({
     },
 
     header:{
-        
+    
     },
 
     sideBySide:{
@@ -32,17 +31,18 @@ const styles = StyleSheet.create({
     },
 
     containerOptions:{
-        width:'90%',
+        width:'96%',
         marginTop:50
     },
 
     options:{
-        borderWidth:1,
-        height:100,
-        marginBottom:40,
+        borderColor:'transparent',
+        height:120,
+        marginBottom:30,
         borderRadius:8,
         alignItems:'center',
-        paddingLeft:20
+        paddingLeft:20,
+        backgroundColor:'#c9cdce'
     }, 
 
     searchContainer:{
@@ -72,13 +72,6 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor:'#3388aa'
-    },
-
-    containerLogo:{
-        flex: 1,
-        backgroundColor: '#3388aa',
-        alignItems:'center',
-        justifyContent: 'center'
     },
 
     containerForm:{
@@ -145,6 +138,18 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderRadius:50
+    },
+
+    hiddenText:{
+        display: 'none',
+        color:'#ff0000', 
+        marginTop:'8%'
+    },
+
+    visibleText:{
+        display: 'flex',
+        color:'#ff0000', 
+        marginTop:'8%'
     }
 })
 
