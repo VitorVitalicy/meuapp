@@ -77,10 +77,10 @@ function Login(){
 
                 <TouchableOpacity 
                   style={styles.buttonEnter}
-                  onPress={()=>{
+                  onPress={async () => {
                     if(NotEmptyLogin(getUser, getPass).status){
-                      if (login(getUser, getPass)){
-                        console.log("teste")
+                      console.log("Usuário e senha Preenchidos")
+                      if(await login(getUser, getPass)==true){
                         navigation.navigate("Clients")
                         setIsHidden(true)
                         }

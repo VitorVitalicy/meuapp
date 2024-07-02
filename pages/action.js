@@ -40,18 +40,22 @@ function Assets(){
                         <MaterialIcons name="camera-alt" size={50} color="black"/>
                         <Text>Camera</Text>
                     </Pressable>
+
                     <Pressable style={[styles.options, styles.sideBySide]}>
                         <MaterialIcons name="video-camera-back" size={50} color="black"/>
                         <Text>Vídeo</Text>
                     </Pressable>
+
                     <Pressable style={[styles.options, styles.sideBySide]}>
                         <Foundation name="clipboard-notes" size={50} color="black"/>
                         <Text>Observações</Text>
                     </Pressable>
+
                     <Pressable style={[styles.options, styles.sideBySide]}>
                         <FontAwesome name="pencil-square-o" size={50} color="black"/>
                         <Text>Observações do Cliente</Text>
                     </Pressable>
+                    
                     <Pressable style={[styles.options, styles.sideBySide]}>
                         <Text>Observações do Cliente</Text>
                     </Pressable>

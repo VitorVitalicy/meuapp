@@ -3,7 +3,6 @@ import url from "../docs/url_requisition";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
 function NotEmptyLogin(user, pass){
     const response = {user:'', pass:'', status:false}
     if(user==''){
@@ -19,7 +18,6 @@ function NotEmptyLogin(user, pass){
 }
 
 async function login(user, pass){
-    let hidden = false
     try {
         const response = await api.post(url.LOGIN,{
             "email":user,
@@ -38,7 +36,6 @@ async function login(user, pass){
         if(token){
             await AsyncStorage.setItem('token', token)
             console.log('Login realizado com sucesso!');
-            hidden = true
             //setIsHidden(true)
         }
         
@@ -49,14 +46,9 @@ async function login(user, pass){
         await AsyncStorage.setItem('user', user)
         const value  = await AsyncStorage.getItem('user')
         console.log('Valor de usuário lido pela storeData: ' + value + '. Do tipo: '+ typeof value)
+        return true
         
     }catch(error) {
-        //await AsyncStorage.setItem('LoginError', error)
-        if(user!='' && pass!=''){
-            hidden = false
-            //setIsHidden(false)
-        }
-
         if (error.response) {
             // A requisição foi feita e o servidor respondeu com um código de status
             // que sai do alcance de 2xx
@@ -74,9 +66,8 @@ async function login(user, pass){
           }
           console.log(`6-Config ${error.config}`);
           console.log(`7-error ${error}`);
+          return false
         }
-
-        return hidden
   };
 
   export {NotEmptyLogin, login}
