@@ -4,10 +4,7 @@ import { useSQLiteContext } from "expo-sqlite"
 
 export type ClientDB = {
     id: number
-    id_bontempo: number
     nome_cliente: string
-    contrato:number
-    projetista: string
 }
 
 export function useClientDB(){
@@ -15,14 +12,11 @@ export function useClientDB(){
 
     async function create(data: Omit< ClientDB, "id">){
         const statement = await database.prepareAsync(
-            "INSERT INTO clients (id_bontempo, nome_cliente, contrato, projetista) VALUES ($id_bontempo, $nome_cliente, $contrato, $projetista)"
+            "INSERT INTO clients (nome_cliente) VALUES ($nome_cliente)"
         )
         try{
             const response = await statement.executeAsync({
-                $id_bontempo: data.id_bontempo,
-                $nome_cliente: data.nome_cliente,
-                $contrato: data.contrato,
-                $projetista: data.projetista
+                $nome_cliente: data.nome_cliente
             })
             // Recuperação do ID do cliente que acabou de ser cadastrado no banco
             const insertedRowId = response.lastInsertRowId.toLocaleString()
@@ -44,6 +38,16 @@ export function useClientDB(){
         }
     }
 
+    async function searchLine(){
+        try{
+            const query = "SELECT * FROM clients WHERE nome_cliente IS NOT NULL"
+            const response = await database.getFirstAsync<ClientDB>(query)
+            return response
+        }catch(err){
+            throw(err)
+        }
+    }
+
     async function remove(){
         try {
             await database.execAsync("DELETE FROM clients") 
@@ -52,6 +56,6 @@ export function useClientDB(){
         }
     }
 
-    return {create, searchByName, remove}
+    return {create, searchByName, searchLine, remove}
 }
 

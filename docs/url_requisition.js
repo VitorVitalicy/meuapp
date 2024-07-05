@@ -4,7 +4,7 @@ const url = {
      LOGOUT : '/logout',
      REFRESH : '/refresh',
      ME : '/me',
-     SALES : '/vendas'
+     VIST : '/vistorias'
 }
 
 export default url;

@@ -4,12 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './routes'
 import { SQLiteProvider } from 'expo-sqlite';
 import initializeDatabase from './database/initializeDataBase';
+import initDataBase from './database/initDataBase'
 
 export default function App(){
   return(
     <NavigationContainer>
       <StatusBar backgroundColor="#3388aa" barStyle="light-content"/>
-      <SQLiteProvider databaseName='vistoriaBT.db' onInit={initializeDatabase}>
+      <SQLiteProvider databaseName='vistoriaBontempo.db' onInit={initDataBase}>
         <Routes />  
       </SQLiteProvider>
     </NavigationContainer>

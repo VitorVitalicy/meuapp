@@ -5,10 +5,12 @@ import Clients from '../pages/home'
 import Login from '../pages/login'
 import Assets from '../pages/action'
 import AuthorizationToken from "../pages/token";
+import Obs from "../pages/obs";
+import {RootStackParamList} from "../scripts/navigationProp"
 
 //import { StackRouter } from "@react-navigation/native";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 //Stack.headerShown(false)
 
 export default function Routes(){
@@ -46,6 +48,14 @@ export default function Routes(){
                     headerShown: false
                 }}
             /> 
+
+            <Stack.Screen 
+                name="Obs"
+                component={Obs}
+                options={{
+                    headerShown: false
+                }}
+            />
 
        </Stack.Navigator>
     )
