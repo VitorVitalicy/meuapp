@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { useClientDB } from "../database/useClientDB";
+import { Ionicons } from '@expo/vector-icons';
 
 export default function BackButton({value, page}){
 
@@ -25,8 +25,7 @@ export default function BackButton({value, page}){
                 remove()
                 navigation.navigate(page)
             }}>
-                <AntDesign name="left" size={24} color="black" />   
-                <Text style={styles.text}>{value}</Text>
+                <Ionicons name="arrow-undo-sharp" size={32} color="black" />
         </TouchableOpacity>
     )
 };

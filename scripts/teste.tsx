@@ -1,9 +1,8 @@
-// import url from "../docs/url_requisition";
-// import api from "./api";
+// LIBRARIES: 
+// COMPONENTS: 
+// LOCAL FILES: 
+// ICONS
 
-// const response = api.get(url.VIST, {
-//     params:{}, 
-//     headers:{}
-// })
-
-// response.data.vistorias.data
+export default function NewComponent() {
+  return ();
+}

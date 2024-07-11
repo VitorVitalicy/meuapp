@@ -1,10 +1,20 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  TouchableOpacityProps,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function ButtonUpdate() {
+type Props = TouchableOpacityProps & {
+  onClick: () => void;
+};
+
+export default function ButtonUpdate({ onClick, ...rest }: Props) {
   return (
     <View style={{ alignItems: "center" }}>
       <TouchableOpacity
+        {...rest}
         style={{
           backgroundColor: "gray",
           height: 50,
@@ -15,7 +25,7 @@ export default function ButtonUpdate() {
           flexDirection: "row",
           gap: 10,
         }}
-        onPress={() => {}}
+        onPress={onClick}
       >
         <Text>Buscar mais</Text>
         <Ionicons name="reload-outline" size={36} color="black" />

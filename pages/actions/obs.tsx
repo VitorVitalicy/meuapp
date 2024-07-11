@@ -1,5 +1,5 @@
 import { Text, TextInput, View } from "react-native";
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/BackButton";
 
 export default function Obs(){
     return(

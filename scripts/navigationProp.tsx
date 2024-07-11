@@ -4,6 +4,8 @@ export type RootStackParamList = {
     Login: undefined;
     Clients: undefined;
     Assets: undefined;
+    Intro: undefined
+    Attachment: undefined
     Obs: undefined;
   };
   

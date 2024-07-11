@@ -2,6 +2,7 @@ import { useNavigation, NavigationProp } from "@react-navigation/native"
 import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native"
 import { RootStackParamList } from "../scripts/navigationProp"
 import { useClientDB, ClientDB } from "../database/useClientDB";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 type Props = TouchableOpacityProps & {
@@ -17,14 +18,22 @@ export function Client({ data, ...rest }: Props){
     const navigation = useNavigation<NavigationProp<RootStackParamList>>()
     const clientDB = useClientDB()
 
+    // async function insert(){
+    //     try {
+    //         const response = await clientDB.create({
+    //             nome_cliente: data.nome_cliente
+    //         })
+    //         console.log(`Produto cadastrado com ID ${response.insertedRowId}`)
+    //     } catch (error) {
+    //         throw(error)
+    //     }
+    // }
+
     async function insert(){
         try {
-            const response = await clientDB.create({
-                nome_cliente: data.nome_cliente
-            })
-            console.log(`Produto cadastrado com ID ${response.insertedRowId}`)
+            await AsyncStorage.setItem('client', JSON.stringify(data))
         } catch (error) {
-            throw(error)
+            console.log(error)
         }
     }
 
@@ -44,8 +53,7 @@ export function Client({ data, ...rest }: Props){
           }}
         >
             <Text>{data.n_contrato} - {data.nome_cliente}</Text>
-            <Text>{data.id}</Text>
-            <Text>{data.responsavel_vistoria}</Text>
+            <Text>Responsável Vistoria: {data.responsavel_vistoria}</Text>
         </TouchableOpacity>
     )
 }

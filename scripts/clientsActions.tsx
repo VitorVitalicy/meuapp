@@ -16,7 +16,7 @@ export async function getClients(search, page) {
               Authorization: `Bearer ${token}`,
             },
           });
-          return response
+        return response
     }catch (err) {
         throw(err)
   }
